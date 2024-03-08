@@ -1,23 +1,27 @@
-package com.mycompany.mavenproject2;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.mavenproject1;
 
 /**
  *
  * @author kfrural
  */
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.mycompany.mavenproject1.classe.GerenciamentoMusicas;
+import com.mycompany.mavenproject1.classe.Musica;
 import java.util.Scanner;
 
-public class Mavenproject2 {
+public class Mavenproject1 {
+
     private static Scanner leitor = new Scanner(System.in);
 
     public static int imprimeMenu() {
         System.out.println("------------------------------");
-        System.out.println("1 - Inserir livro");
-        System.out.println("2 - Remover livro");
-        System.out.println("3 - Pesquisar livro (titulo)");
-        System.out.println("4 - Pesquisar livro (autor)");
+        System.out.println("1 - Fazer musica");
+        System.out.println("2 - Cancelar musica");
+        System.out.println("3 - Listar Reservas");
+        System.out.println("4 - Buscar Reservas");
         System.out.println("0 - Sair");
         System.out.println("-----------------------------");
         System.out.println("Escolha uma opção:");
@@ -26,54 +30,41 @@ public class Mavenproject2 {
     }
 
     public static void main(String[] args) {
-        List<Musica> listaMusicas = new ArrayList<>();
+        GerenciamentoMusicas gerenciamento = new GerenciamentoMusicas();
         int opcao = 0;
         do {
             opcao = imprimeMenu();
             switch (opcao) {
-                case 1: // inserção
-                    Musica l1 = new Musica();
-                    l1.preencher();
-                    listaMusicas.add(l1);
+                case 1:
+                    Musica musica = new Musica();
+                    musica.fill();
+                    gerenciamento.adicionarMusica(musica);
                     break;
-                case 2: // remoção
-                    System.out.println("Informe o titulo:");
-                    String title = leitor.nextLine();
-                    Iterator<Musica> iterator = listaMusicas.iterator();
-                    while (iterator.hasNext()) {
-                        Musica li = iterator.next();
-                        if (title.equals(li.getTitulo())) {
-                            System.out.println("Musica encontrado");
-                            iterator.remove();
-                        }
+                case 2:
+                    System.out.println("bota o nome pra cancelar\n");
+                    String nome = leitor.next();
+                    gerenciamento.cancelarMusica(nome);
+                    break;
+                case 3:
+                    System.out.println("Lista das musica\n");
+                    gerenciamento.listarMusica();
+                    break;
+                case 4:
+                    System.out.println("bota o nome pra buscar\n");
+                    nome = leitor.next();
+                    Musica musicaEncontrada = gerenciamento.buscarMusica(nome);
+                    if(musicaEncontrada != null){
+                        System.out.println("Encontrada " + musicaEncontrada);
+                    } else{
+                        System.out.println("Nao foi encontrada\n");
                     }
                     break;
-                case 3: // pesquisa por título
-                    System.out.println("Informe o titulo:");
-                    title = leitor.nextLine();
-                    for (Musica li : listaMusicas) {
-                        if (title.equals(li.getTitulo())) {
-                            System.out.println("Musica encontrado");
-                            li.imprimir();
-                        }
-                    }
-                    break;
-                case 4: // pesquisa por autor
-                    System.out.println("Informe o autor:");
-                    String autor = leitor.nextLine();
-                    for (Musica li : listaMusicas) {
-                        if (autor.equals(li.getArtista())) {
-                            System.out.println("Autor encontrado");
-                            li.imprimir();
-                        }
-                    }
-                    break;
-                case 0: // sair
+                case 0:
                     System.out.println("Saindo...");
                     break;
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("Opcao invalida");
             }
-        } while (opcao != 0);
+        } while(opcao != 0);
     }
 }
