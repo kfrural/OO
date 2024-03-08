@@ -1,4 +1,4 @@
-package com.mycompany.mavenproject2;
+package com.mycompany.mavenproject1.classe;
 
 import java.util.Scanner;
 
@@ -77,6 +77,10 @@ public class Filme {
 
     public double getPreco() {
         return this.preco;
+    }
+
+    public void fill() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
