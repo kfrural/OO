@@ -18,5 +18,7 @@ public class Mavenproject2 {
 
         System.out.println(l1.nomeBiblioteca);
         System.out.println(l2.getNomeBiblioteca());
+
+        //o metodo estico compartilha o mesmo tributo
     }
 }
