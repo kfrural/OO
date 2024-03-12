@@ -1,4 +1,4 @@
-package com.mycompany.mavenproject3.classes;
+package com.mycompany.mavenproject1.classe;
 
 import java.util.Scanner;
 
@@ -43,10 +43,19 @@ public class Ponto {
     public String toString() {
         return "Ponto{" + "x=" + x + ", y=" + y + '}';
     }
+    //FORMULAS
+    public double distancia(Ponto p1, Ponto p2){
+        return Math.sqrt(Math.pow(p2.getX() - p1.getX(), 2) + Math.pow(p2.getY() - p1.getY(), 2));
+    }
     
-//    public double distancia(Ponto p){
-//        return Math.sqrt(Math.pow(this.x - p.getX(), 2) + Math.pow(this.y - p.getY(), 2));
-//    }
+    public void isColinear(Ponto p1, Ponto p2, Ponto p3){
+        double a = p1.getX() * (p2.getY() - p3.getY()) + p2.getX() * (p3.getY() - p1.getY()) + p3.getX() *(p1.getY() - p2.getY());
+        if(a == 0){
+            System.out.println("Sim");
+        }else{
+            System.out.println("Nao");
+        }
+    }
     
 
     public double getX() {
