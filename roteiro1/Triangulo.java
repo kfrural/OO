@@ -49,18 +49,13 @@ public class Triangulo {
     }
      public double calcularArea() {
 
-    double[] distancias = new double[3];
-    for (int i = 0; i < 3; i++) {
-        for (int j = i + 1; j < 3; j++) {
-            distancias[i] = this.distancia(this.pontos[i], this.pontos[j]);
-        }
-    }
+    double maiorX = Math.max(Math.max(pontos[0].getX(), pontos[1].getX()), pontos[2].getX());
+    double menorX = Math.min(Math.min(pontos[0].getX(), pontos[1].getX()), pontos[2].getX());
+    double base = maiorX - menorX;
 
-    double maiorDistancia = Math.max(distancias[0], Math.max(distancias[1], distancias[2]));
-    double menorDistancia = Math.min(distancias[0], Math.min(distancias[1], distancias[2]));
-
-    double base = maiorDistancia;
-    double altura = menorDistancia;
+    double maiorY = Math.max(Math.max(pontos[0].getY(), pontos[1].getY()), pontos[2].getY());
+    double menorY = Math.min(Math.min(pontos[0].getY(), pontos[1].getY()), pontos[2].getY());
+    double altura = maiorY - menorY;
 
     return (base * altura) / 2;
     }
