@@ -22,6 +22,7 @@ public class Quadrado {
     
     public void imprimir(){
         System.out.println("Os trem preenchido ai\n\n");
+    //    Arrays.stream(getPontos()).forEach(Ponto::imprimir);
         for(Ponto p : getPontos()){
             p.imprimir();
         }
