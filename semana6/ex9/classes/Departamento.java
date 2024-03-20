@@ -10,7 +10,7 @@ import java.util.List;
 public class Departamento {
     private String nomeDpto;
     private Gerente gerente;
-    private List <Funcionario> funcionarios;
+    private List <Funcionario> funcionarios = new ArrayList<>(); //esse trem tava dando erro pq
 
     public Departamento(String nomeDpto) {
         this.nomeDpto = nomeDpto;
