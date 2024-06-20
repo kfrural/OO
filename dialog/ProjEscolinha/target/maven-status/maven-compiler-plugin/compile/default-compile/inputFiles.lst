@@ -1,0 +1,15 @@
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/gerenciador/GerenciadorProfessor.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/classes/Professor.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/ProjPedidoProdutos.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/gui/FrHome.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/file/SerializadorCSVDisciplina.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/gerenciador/GerenciadorAluno.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/gui/dialogs/DlgCadAluno.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/classes/Disciplina.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/file/SerializadorCSVAluno.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/gui/dialogs/DlgCadProfessor.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/gerenciador/GerenciadorDisciplina.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/gui/dialogs/DlgCadDisciplina.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/file/SerializadorCSVProfessor.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/classes/Aluno.java
+/home/kfrural/Downloads/ProjEscolinha/src/main/java/com/oo/projpedidoprodutos/file/FilePersistence.java
