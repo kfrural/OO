@@ -23,4 +23,9 @@ public class GerenciadorReservas {
             reserva.toString();
         }
     }
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+    
 }

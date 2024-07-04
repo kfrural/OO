@@ -75,16 +75,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Quarto"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastroQuartoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRealizarReserva">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reservar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRealizarReservaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVisualizarReservas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Vizualizar reservas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarReservasActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -95,7 +104,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="exibicaoDasReservas">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>

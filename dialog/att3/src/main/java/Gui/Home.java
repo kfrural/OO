@@ -4,8 +4,11 @@
  */
 package Gui;
 
+import Classes.Reserva;
 import Gerenciador.GerenciadorHospedes;
 import Gerenciador.GerenciadorQuartos;
+import Gerenciador.GerenciadorReservas;
+import java.util.List;
 
 /**
  *
@@ -16,10 +19,13 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+        GerenciadorHospedes gerenciadorHospede = new GerenciadorHospedes();
+        GerenciadorQuartos gerenciadorQuarto = new GerenciadorQuartos();
+        GerenciadorReservas gerenciadorReserva = new GerenciadorReservas();
+        
     public Home() {
         initComponents();
-        GerenciadorHospedes gerenciadorHospede;
-        GerenciadorQuartos gerenciadorQuarto;
+        
     }
 
     /**
@@ -39,7 +45,7 @@ public class Home extends javax.swing.JFrame {
         btnRealizarReserva = new javax.swing.JButton();
         btnVisualizarReservas = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        exibicaoDasReservas = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,17 +62,32 @@ public class Home extends javax.swing.JFrame {
         jPanel2.add(btnCadastroHospede);
 
         btnCadastroQuarto.setText("Quarto");
+        btnCadastroQuarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroQuartoActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnCadastroQuarto);
 
         btnRealizarReserva.setText("Reservar");
+        btnRealizarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRealizarReservaActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnRealizarReserva);
 
         btnVisualizarReservas.setText("Vizualizar reservas");
+        btnVisualizarReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarReservasActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnVisualizarReservas);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        exibicaoDasReservas.setColumns(20);
+        exibicaoDasReservas.setRows(5);
+        jScrollPane1.setViewportView(exibicaoDasReservas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,8 +114,28 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroHospedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroHospedeActionPerformed
-        // TODO add your handling code here:
+        CadHospede novoHospede = new CadHospede(this, rootPaneCheckingEnabled);
+        novoHospede.setVisible(true);
     }//GEN-LAST:event_btnCadastroHospedeActionPerformed
+
+    private void btnCadastroQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroQuartoActionPerformed
+        CadQuarto novoQuarto = new CadQuarto(this, rootPaneCheckingEnabled);
+        novoQuarto.setVisible(true);
+    }//GEN-LAST:event_btnCadastroQuartoActionPerformed
+
+    private void btnRealizarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarReservaActionPerformed
+        RealizarReserva novaReserva = new RealizarReserva(this, rootPaneCheckingEnabled);
+        novaReserva.setVisible(true);
+    }//GEN-LAST:event_btnRealizarReservaActionPerformed
+
+    private void btnVisualizarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarReservasActionPerformed
+        List<Reserva> reservas = gerenciadorReserva.getReservas();
+        String listagem = "";
+        for(Reserva reserva : reservas){
+            listagem = listagem + reserva.toString();
+        }
+        exibicaoDasReservas.setText(listagem);
+    }//GEN-LAST:event_btnVisualizarReservasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,10 +177,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastroQuarto;
     private javax.swing.JButton btnRealizarReserva;
     private javax.swing.JButton btnVisualizarReservas;
+    private javax.swing.JTextArea exibicaoDasReservas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

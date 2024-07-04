@@ -9,9 +9,18 @@ package Classes;
  * @author 14626232639
  */
 public class Hospede {
+    private String nome;
     private String CPF;
     private String numero;
     private String endereço;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public String getCPF() {
         return CPF;
@@ -36,6 +45,8 @@ public class Hospede {
     public void setEndereço(String endereço) {
         this.endereço = endereço;
     }
+
+    
 
     @Override
     public String toString() {

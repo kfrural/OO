@@ -4,6 +4,8 @@
 
 package com.mycompany.att3;
 
+import Gui.Home;
+
 /**
  *
  * @author 14626232639
@@ -11,6 +13,7 @@ package com.mycompany.att3;
 public class Att3 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Home tela = new Home();
+        tela.setVisible(true);
     }
 }
