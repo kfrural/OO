@@ -4,10 +4,18 @@
  */
 package Gerenciador;
 
+import Classes.Hospede;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author 14626232639
  */
 public class GerenciadorHospedes {
+    private List<Hospede> hospedes = new ArrayList<>();
     
+    public void addHospede(Hospede hospede){
+        hospedes.add(hospede);
+    }
 }

@@ -54,6 +54,13 @@ public class Reserva {
     public void setChekout(String chekout) {
         this.chekout = chekout;
     }
+
+    @Override
+    public String toString() {
+        return "Reserva{" + "id=" + id + ", quarto=" + quarto + ", hospede=" + hospede + ", chekin=" + chekin + ", chekout=" + chekout + '}';
+    }
+
+    
     
     
 }
