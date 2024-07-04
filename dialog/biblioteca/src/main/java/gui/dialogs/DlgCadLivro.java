@@ -29,6 +29,7 @@ public class DlgCadLivro extends javax.swing.JDialog {
      */
     public DlgCadLivro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+         this.gerenciadorLivro = new GerenciadorLivro();
         initComponents();
     }
     

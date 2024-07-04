@@ -30,6 +30,7 @@ public final class DlgCadUsuario extends javax.swing.JDialog {
      */
     public DlgCadUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.gerenciadorUsuario = new GerenciadorUsuario();
         initComponents();
     }
     
