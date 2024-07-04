@@ -32,6 +32,8 @@ public final class DlgCadUsuario extends javax.swing.JDialog {
         super(parent, modal);
         this.gerenciadorUsuario = new GerenciadorUsuario();
         initComponents();
+        this.habilitarCampos(false);
+        this.limparCampos();
     }
     
     public void habilitarCampos(boolean flag){

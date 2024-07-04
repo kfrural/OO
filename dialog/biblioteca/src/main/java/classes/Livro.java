@@ -71,6 +71,11 @@ public class Livro {
         System.out.println("\nAvaliação Média: " + avaliacao.calcularMedia());
     }
 
+    @Override
+    public String toString() {
+        return "Livro{" + "titulo=" + titulo + ", anoPublicacao=" + anoPublicacao + ", autores=" + autores + ", generos=" + generos + ", avaliacao=" + avaliacao + '}';
+    }
+
     // Getters e setters conforme necessário
     public String getTitulo() {
         return titulo;
@@ -90,6 +95,30 @@ public class Livro {
 
     public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
+    }
+
+    public List<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(List<Autor> autores) {
+        this.autores = autores;
+    }
+
+    public List<String> getGeneros() {
+        return generos;
+    }
+
+    public void setGeneros(List<String> generos) {
+        this.generos = generos;
+    }
+
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
     

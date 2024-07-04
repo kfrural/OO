@@ -44,6 +44,11 @@ public class Avaliacao {
             return 0.0;
     }
 
+    @Override
+    public String toString() {
+        return "Avaliacao{" + "notaAcumulada=" + notaAcumulada + ", numeroDeAvaliacoes=" + numeroDeAvaliacoes + '}';
+    }
+
     // Getters
     public double getNotaAcumulada() {
         return notaAcumulada;
@@ -51,6 +56,14 @@ public class Avaliacao {
 
     public int getNumeroDeAvaliacoes() {
         return numeroDeAvaliacoes;
+    }
+
+    public void setNotaAcumulada(double notaAcumulada) {
+        this.notaAcumulada = notaAcumulada;
+    }
+
+    public void setNumeroDeAvaliacoes(int numeroDeAvaliacoes) {
+        this.numeroDeAvaliacoes = numeroDeAvaliacoes;
     }
 }
 

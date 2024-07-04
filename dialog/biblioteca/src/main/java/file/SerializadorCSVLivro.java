@@ -9,10 +9,14 @@ import java.util.List;
  */
 public class SerializadorCSVLivro {
      public String toCSV(List<Livro> livros) {
-        String csv = "Titulo;Avaliacao;\n"; // Cabeçalho
+        String csv = "Titulo;AnoPublicacao;Autores;Generos;Avaliacao\n"; // Cabeçalho
         for (Livro livro : livros) {
             csv += livro.getTitulo() + ";"
-                    + livro.getAvaliacaoMedia() + ";\n";
+                    + livro.getAnoPublicacao() + ";"
+                    + livro.getAutores() + ";"
+                    + livro.getGeneros() + ";"
+                    + livro.getAvaliacao() + ";\n";
+                    
         }
         return csv;
     }

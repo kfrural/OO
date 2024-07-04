@@ -1,7 +1,11 @@
 package gui.dialogs;
 
+import classes.Autor;
+import classes.Avaliacao;
 import classes.Livro;
 import gerenciador.GerenciadorLivro;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,33 +35,68 @@ public class DlgCadLivro extends javax.swing.JDialog {
         super(parent, modal);
          this.gerenciadorLivro = new GerenciadorLivro();
         initComponents();
+        this.habilitarCampos(false);
+        this.limparCampos();
     }
     
     
     public void habilitarCampos(boolean flag){
         edtTitulo.setEnabled(flag);
         edtAnoPublicacao.setEnabled(flag);
+        edtAutores.setEnabled(flag);
+        edtGeneros.setEnabled(flag);
+        edtAvaliacao.setEnabled(flag);
     }
     
     public void limparCampos(){
         edtTitulo.setText("");
         edtAnoPublicacao.setText("");
+        edtAutores.setText("");
+        edtGeneros.setText("");
+        edtAvaliacao.setText("");
     }
     
     public void objParaCampos(Livro l){
         edtTitulo.setText(l.getTitulo());
         edtAnoPublicacao.setText(l.getAnoPublicacao() + "");
+        edtAutores.setText(l.getAutores()+ "");
+        edtGeneros.setText(l.getGeneros() + "");
+        edtAvaliacao.setText(l.getAvaliacao() + "");
     }
     
     public Livro camposParaObj(){
         Livro l = new Livro();
         l.setTitulo(edtTitulo.getText());
+        
         String anoPublic = edtAnoPublicacao.getText();
         int a = 0;
         if(!anoPublic.isEmpty()){
             a = Integer.parseInt(anoPublic);
         }
         l.setAnoPublicacao(a);
+        
+        List<Autor> autores = new ArrayList<>();
+        String[] autorStrings = edtAutores.getText().split(",");
+        for (String autorString : autorStrings) {
+            Autor autor = new Autor();
+            autor.setNome(autorString.trim());
+            autores.add(autor);
+        }
+        l.setAutores(autores);
+        
+        List<String> generos = new ArrayList<>();
+        String[] generoStrings = edtGeneros.getText().split(",");
+        for (String generoString : generoStrings) {
+            generos.add(generoString.trim());
+        }
+        l.setGeneros(generos);
+        
+        String avaliacaoString = edtAvaliacao.getText();
+        Avaliacao avaliacao = new Avaliacao();
+        avaliacao.setNotaAcumulada(Double.parseDouble(avaliacaoString));
+        avaliacao.setNumeroDeAvaliacoes(1);
+        l.setAvaliacao(avaliacao);
+        
         return l;
     }
 
@@ -83,6 +122,12 @@ public class DlgCadLivro extends javax.swing.JDialog {
         edtTitulo = new javax.swing.JTextField();
         lblAnoPublicacao = new javax.swing.JLabel();
         edtAnoPublicacao = new javax.swing.JTextField();
+        lblAutor = new javax.swing.JLabel();
+        edtAutores = new javax.swing.JTextField();
+        lblGeneros = new javax.swing.JLabel();
+        edtGeneros = new javax.swing.JTextField();
+        lblAvaliacao = new javax.swing.JLabel();
+        edtAvaliacao = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         edtListagem = new javax.swing.JTextArea();
 
@@ -181,31 +226,66 @@ public class DlgCadLivro extends javax.swing.JDialog {
 
         lblAnoPublicacao.setText("Ano de publicacao");
 
+        lblAutor.setText("Autores");
+
+        lblGeneros.setText("Generos");
+
+        lblAvaliacao.setText("Avaliacao");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
-                .addComponent(edtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblAnoPublicacao)
-                .addGap(18, 18, 18)
-                .addComponent(edtAnoPublicacao, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblAvaliacao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(edtAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblAutor)
+                                .addGap(18, 18, 18)
+                                .addComponent(edtAutores))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblTitulo)
+                                .addGap(18, 18, 18)
+                                .addComponent(edtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblAnoPublicacao)
+                                .addGap(18, 18, 18)
+                                .addComponent(edtAnoPublicacao, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblGeneros)
+                                .addGap(18, 18, 18)
+                                .addComponent(edtGeneros)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitulo)
                     .addComponent(edtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAnoPublicacao)
                     .addComponent(edtAnoPublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAutor)
+                    .addComponent(edtAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGeneros)
+                    .addComponent(edtGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAvaliacao)
+                    .addComponent(edtAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         edtListagem.setColumns(20);
@@ -349,11 +429,17 @@ public class DlgCadLivro extends javax.swing.JDialog {
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField edtAnoPublicacao;
+    private javax.swing.JTextField edtAutores;
+    private javax.swing.JTextField edtAvaliacao;
+    private javax.swing.JTextField edtGeneros;
     private javax.swing.JTextArea edtListagem;
     private javax.swing.JTextField edtTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAnoPublicacao;
+    private javax.swing.JLabel lblAutor;
+    private javax.swing.JLabel lblAvaliacao;
+    private javax.swing.JLabel lblGeneros;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panButton;
