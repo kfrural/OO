@@ -157,11 +157,19 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="lblAutores" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="edtAutores" min="-2" pref="155" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblGeneros" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="edtGeneros" min="-2" pref="139" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblAvaliacao" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="edtAvaliacao" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
@@ -173,7 +181,7 @@
                           <Component id="edtAnoPublicacao" min="-2" pref="398" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="35" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -195,6 +203,10 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblAutores" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="edtAutores" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblGeneros" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="edtGeneros" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAvaliacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="edtAvaliacao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
@@ -225,6 +237,20 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="edtAutores">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblGeneros">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Generos:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="edtGeneros">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAvaliacao">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Avaliacao:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="edtAvaliacao">
         </Component>
       </SubComponents>
     </Container>

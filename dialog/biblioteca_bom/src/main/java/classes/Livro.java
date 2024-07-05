@@ -61,16 +61,16 @@ public class Livro {
 public String toString() {
     StringBuilder detalhes = new StringBuilder();
     detalhes.append("Título: ").append(titulo).append("\n");
-    //detalhes.append("Autor(es): ");
-    //for (Autor autor : autores) {
-    //    detalhes.append(autor).append("; ");
-   // }
+    detalhes.append("Autor(es): ");
+    for (Autor autor : autores) {
+        detalhes.append(autor).append("; ");
+    }
     detalhes.append("\nAno de Publicação: ").append(anoPublicacao).append("\n");
-    //detalhes.append("Gêneros: ");
-    //for (String genero : generos) {
-    //    detalhes.append(genero).append(" ");
-    //}
-   // detalhes.append("\nAvaliação Média: ").append(avaliacao.calcularMedia()).append("\n");
+    detalhes.append("Gêneros: ");
+    for (String genero : generos) {
+        detalhes.append(genero).append(" ");
+    }
+    detalhes.append("\nAvaliação Média: ").append(avaliacao.calcularMedia()).append("\n");
 
     return detalhes.toString();
 }

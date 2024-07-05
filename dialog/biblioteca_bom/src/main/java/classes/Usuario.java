@@ -93,14 +93,17 @@ public class Usuario {
         this.id = id;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "Usuario{" +
-                "nome='" + nome + '\'' +
-                ", generosFavoritos=" + generosFavoritos +
-                ", livrosLidos=" + livrosLidos +
-                '}';
+        String texto = "";
+        texto += "--------- Usuario -----------\n";
+        texto += " CPF:" + this.getId() + "\n";
+        texto += " Nome:" + this.getNome() + "\n";
+        texto += " -------------------------------\n";
+
+        return texto;
     }
+
 }
 
 

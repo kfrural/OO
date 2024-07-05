@@ -58,8 +58,13 @@ public class GerenciadorUsuario {
 
     @Override
     public String toString() {
-        return "GerenciadorUsuario{" + "usuarios=" + usuarios + '}';
+        StringBuilder saida = new StringBuilder();
+        for (Usuario usuario : usuarios) {
+            saida.append(usuario.toString()).append("\n");
+        }
+        return saida.toString();
     }
+
     
     public void salvarNoArquivo(String caminho){
         SerializadorCSVUsuario serializador = new SerializadorCSVUsuario();

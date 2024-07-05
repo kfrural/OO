@@ -53,8 +53,16 @@ public class Avaliacao {
         return notaAcumulada;
     }
 
+    public void setNotaAcumulada(double notaAcumulada) {
+        this.notaAcumulada = notaAcumulada;
+    }
+
     public int getNumeroDeAvaliacoes() {
         return numeroDeAvaliacoes;
+    }
+
+    public void setNumeroDeAvaliacoes(int numeroDeAvaliacoes) {
+        this.numeroDeAvaliacoes = numeroDeAvaliacoes;
     }
 
     public Usuario getUsuario() {

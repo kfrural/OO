@@ -1,7 +1,11 @@
 package gui;
 
+import classes.Autor;
+import classes.Avaliacao;
 import classes.Livro;
 import gerenciador.GerenciadorLivro;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -9,6 +13,7 @@ import javax.swing.JOptionPane;
  * @author joserui
  */
 public class FrCadLivro extends javax.swing.JFrame {
+
     public boolean editando;
     public String codAntigo;
     public GerenciadorLivro gerenciadorLivro;
@@ -21,7 +26,7 @@ public class FrCadLivro extends javax.swing.JFrame {
         initComponents();
         this.habilitarCampos(false);
         this.limparCampos();
-        
+
         gerenciadorLivro.carregarNoArquivo("ListagemLivros.csv");
         edtListagem.setText(gerenciadorLivro.toString());
     }
@@ -29,27 +34,60 @@ public class FrCadLivro extends javax.swing.JFrame {
     public void habilitarCampos(boolean flag) {
         edtTitulo.setEnabled(flag);
         edtAnoPublicacao.setEnabled(flag);
+        edtAutores.setEnabled(flag);
+        edtGeneros.setEnabled(flag);
+        edtAvaliacao.setEnabled(flag);
     }
 
     public void limparCampos() {
         edtTitulo.setText("");
         edtAnoPublicacao.setText("");
+        edtAutores.setText("");
+        edtGeneros.setText("");
+        edtAvaliacao.setText("");
     }
 
     public void objetoParaCampos(Livro l) {
         edtTitulo.setText(l.getTitulo());
         edtAnoPublicacao.setText(l.getAnoPublicacao() + "");
+        edtAutores.setText(l.getAutores() + "");
+        edtGeneros.setText(l.getGeneros() + "");
+        edtAvaliacao.setText(l.getAvaliacao() + "");
     }
 
     public Livro camposParaObjeto() {
         Livro l = new Livro();
         l.setTitulo(edtTitulo.getText());
+
         String anoPublic = edtAnoPublicacao.getText();
         int a = 0;
-        if(!anoPublic.isEmpty()){
+        if (!anoPublic.isEmpty()) {
             a = Integer.parseInt(anoPublic);
         }
         l.setAnoPublicacao(a);
+
+        List<Autor> autores = new ArrayList<>();
+        String[] autorStrings = edtAutores.getText().split(",");
+        for (String autorString : autorStrings) {
+            Autor autor = new Autor();
+            autor.setNome(autorString.trim());
+            autores.add(autor);
+        }
+        l.setAutores(autores);
+
+        List<String> generos = new ArrayList<>();
+        String[] generoStrings = edtGeneros.getText().split(",");
+        for (String generoString : generoStrings) {
+            generos.add(generoString.trim());
+        }
+        l.setGeneros(generos);
+
+        String avaliacaoString = edtAvaliacao.getText();
+        Avaliacao avaliacao = new Avaliacao();
+        avaliacao.setNotaAcumulada(Double.parseDouble(avaliacaoString));
+        avaliacao.setNumeroDeAvaliacoes(1);
+        l.setAvaliacao(avaliacao);
+
         return l;
     }
 
@@ -78,6 +116,10 @@ public class FrCadLivro extends javax.swing.JFrame {
         edtTitulo = new javax.swing.JTextField();
         lblAutores = new javax.swing.JLabel();
         edtAutores = new javax.swing.JTextField();
+        lblGeneros = new javax.swing.JLabel();
+        edtGeneros = new javax.swing.JTextField();
+        lblAvaliacao = new javax.swing.JLabel();
+        edtAvaliacao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -149,17 +191,29 @@ public class FrCadLivro extends javax.swing.JFrame {
 
         lblAutores.setText("Autores:");
 
+        lblGeneros.setText("Generos:");
+
+        lblAvaliacao.setText("Avaliacao:");
+
         javax.swing.GroupLayout panCamposLayout = new javax.swing.GroupLayout(panCampos);
         panCampos.setLayout(panCamposLayout);
         panCamposLayout.setHorizontalGroup(
             panCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panCamposLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(panCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panCamposLayout.createSequentialGroup()
                         .addComponent(lblAutores)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edtAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(edtAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblGeneros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(edtGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAvaliacao)
+                        .addGap(18, 18, 18)
+                        .addComponent(edtAvaliacao))
                     .addGroup(panCamposLayout.createSequentialGroup()
                         .addComponent(lblTitulo)
                         .addGap(12, 12, 12)
@@ -168,7 +222,7 @@ public class FrCadLivro extends javax.swing.JFrame {
                         .addComponent(lblAnoPublicacao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(edtAnoPublicacao, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         panCamposLayout.setVerticalGroup(
             panCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +238,11 @@ public class FrCadLivro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAutores)
-                    .addComponent(edtAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGeneros)
+                    .addComponent(edtGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAvaliacao)
+                    .addComponent(edtAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
         );
 
@@ -230,13 +288,12 @@ public class FrCadLivro extends javax.swing.JFrame {
 
         //Este metodo ja verifica se esta criando um novo ou atualizando
         //gerenciadorProfessor.salvarProfessor(p);
-        if(this.editando){
+        if (this.editando) {
             gerenciadorLivro.atualizarLivro(codAntigo, l);
-        }else{
+        } else {
             gerenciadorLivro.addLivro(l);
         }
 
-        
         //No final reset a tela
         this.limparCampos();
         this.habilitarCampos(false);
@@ -244,7 +301,7 @@ public class FrCadLivro extends javax.swing.JFrame {
 
         String listagem = gerenciadorLivro.toString();
         edtListagem.setText(listagem);
-        
+
         gerenciadorLivro.salvarNoArquivo("ListagemLivros.csv");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -265,14 +322,14 @@ public class FrCadLivro extends javax.swing.JFrame {
             gerenciadorLivro.removerLivro(codEscolhido);
             JOptionPane.showMessageDialog(this, "Exclusão feita com sucesso!");
         }
-        
+
         String listagem = gerenciadorLivro.toString();
         edtListagem.setText(listagem);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String codEscolhido = JOptionPane.showInputDialog("Informe o CODIGO do produto que deseja EDITAR:", "");
-        
+
         Livro produtoEditando = gerenciadorLivro.buscarLivro(codEscolhido);
 
         if (produtoEditando == null) {
@@ -281,7 +338,7 @@ public class FrCadLivro extends javax.swing.JFrame {
         } else {
             this.limparCampos();
             this.habilitarCampos(true);
-            
+
             this.objetoParaCampos(produtoEditando);
             this.editando = true;
             this.codAntigo = produtoEditando.getTitulo();
@@ -291,8 +348,8 @@ public class FrCadLivro extends javax.swing.JFrame {
     private void edtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtTituloActionPerformed
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
@@ -301,12 +358,16 @@ public class FrCadLivro extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField edtAnoPublicacao;
     private javax.swing.JTextField edtAutores;
+    private javax.swing.JTextField edtAvaliacao;
+    private javax.swing.JTextField edtGeneros;
     private javax.swing.JTextArea edtListagem;
     private javax.swing.JTextField edtTitulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAnoPublicacao;
     private javax.swing.JLabel lblAutores;
+    private javax.swing.JLabel lblAvaliacao;
+    private javax.swing.JLabel lblGeneros;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panBotoes;
     private javax.swing.JPanel panCampos;
