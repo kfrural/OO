@@ -9,6 +9,6 @@ import interfaces.EnviadorMensagem;
 public class EnviadorTelegram implements EnviadorMensagem {
     @Override
     public void enviarMensagem(String mensagem) {
-        System.out.println("Enviando mensagem no Telegram: " + mensagem);
+        System.out.println("Enviando Telegram: " + mensagem);
     }
 }

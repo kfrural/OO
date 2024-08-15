@@ -6,16 +6,14 @@ import interfaces.EnviadorMensagem;
  *
  * @author kfrural
  */
- public class ProcessadorMensagem {
-    private EnviadorMensagem enviador;
+public class ProcessadorMensagem {
+    private EnviadorMensagem enviadorMensagem;
 
-    // Construtor que recebe uma implementação de IEnviadorMensagem
-    public ProcessadorMensagem(EnviadorMensagem enviador) {
-        this.enviador = enviador;
+    public ProcessadorMensagem(EnviadorMensagem enviadorMensagem) {
+        this.enviadorMensagem = enviadorMensagem;
     }
 
-    // Método que processa a mensagem
     public void processar(String mensagem) {
-        enviador.enviarMensagem(mensagem);
+        enviadorMensagem.enviarMensagem(mensagem);
     }
 }
