@@ -1,0 +1,5 @@
+interfaces/IConversorMoeda.class
+com/mycompany/ex_voador/Ex_voador.class
+classes/ConversorMoedaDolar.class
+classes/ConversorMoedaReal.class
+classes/ServicoFinanceiro.class
