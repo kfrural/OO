@@ -1,0 +1,5 @@
+classes/ServicoLog.class
+com/mycompany/ex_voador/Ex_voador.class
+classes/ArquivoLogStorage.class
+interfaces/ILogStorage.class
+classes/ConsoleLogStorage.class
