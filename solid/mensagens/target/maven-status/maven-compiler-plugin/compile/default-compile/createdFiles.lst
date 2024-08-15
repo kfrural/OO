@@ -1,0 +1,6 @@
+gerenciador/ProcessadorMensagem.class
+classes/EnviadorSMS.class
+com/mycompany/ex_voador/Ex_voador.class
+classes/EnviadorTelegram.class
+classes/EnviadorEmail.class
+interfaces/EnviadorMensagem.class
