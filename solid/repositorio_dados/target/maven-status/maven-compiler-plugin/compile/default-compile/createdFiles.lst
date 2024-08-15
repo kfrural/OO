@@ -1,0 +1,6 @@
+classes/RepositorioBancoDados.class
+classes/ServicoDados.class
+classes/Pessoa.class
+com/mycompany/ex_voador/Ex_voador.class
+classes/SQLiteConnector.class
+interfaces/IRepositorioDados.class
